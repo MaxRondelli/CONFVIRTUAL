@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Signin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/3d1d9baed2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="stile.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand mb-0 h1"></i>CONFVIRTUAL</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 mx-auto">
+                <div id="first">
+                    <div class="myform form">
+                        <div class="logo mb-2">
+                            <div class="col-md-12 text-center">
+                                <h1>Sign in</h1>
+                            </div>
+                        </div>
+
+                        <form name="frmContact" action="signIn.php" method="post">
+
+                            <div style="padding: 1em 0 1em 0">
+                                <hr>
+                            </div>
+
+                            <!-- username input -->
+                            <div class="form-outline mb-4">
+                                <input name="username" id="form3Example3" class="form-control form-control-lg"
+                                    placeholder="Username" autocomplete="off" required />
+                            </div>
+
+                            <!-- Nome input -->
+                            <div class="form-outline mb-4">
+                                <input name="nome" id="form3Example3" class="form-control form-control-lg"
+                                    placeholder="Nome" autocomplete="off" required />
+                            </div>
+
+                            <!-- Cognome input -->
+                            <div class="form-outline mb-4">
+                                <input name="cognome" id="form3Example3" class="form-control form-control-lg"
+                                    placeholder="Cognome" autocomplete="off" required />
+                            </div>
+
+                            <!-- Luogo di Nascita input -->
+                            <div class="form-outline mb-4">
+                                <input name="luogo_di_nascita" id="form3Example3" class="form-control form-control-lg"
+                                    placeholder="Luogo Di Nascita" autocomplete="off" required />
+                            </div>
+
+                            <!-- Data Di Nascita input -->
+                            <label for="date" style="margin-bottom: 20px;"><b>Data Di Nascita:</b></label>
+                            <div class="form-outline mb-4">
+                                <input type="date" class="form-control form-control-lg" name="data_di_nascita">
+                            </div>
+
+                            <!-- Tipologia Utente input -->
+                            <label for="time" style="margin-bottom: 10px;"><b>Scegli Tipologia Utente:</b></label>
+                            <div class="form-outline mb-4">
+                              <select id="tipologia_utente" name="tipologia">
+                                <option value="0">BASE</option>
+                                <option value="1">SPEAKER</option>
+                                <option value="2">PRESENTER</option>
+                              </select>
+                              <div id="formToFill"></div>
+
+                            </div>
+
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", (event) => {
+                                  const formToFill = document.getElementById("formToFill");
+                                  const selection = document.getElementById("tipologia_utente");
+                                  var dynamicContent = '';
+
+                                  selection.addEventListener("change", () => {
+                                    if(selection.value === "1") {
+                                        dynamicContent = 
+                                        `<br>
+                                        <input type="text" name="nome_universita" required placeholder = "Nome Universita"> <br>
+                                        <input type="text" name="nome_dipartimento" required placeholder = "Nome Dipartimento"> <br>
+                                        <input type="text" name="curriculum" required placeholder = "Curriculum"> <br>                                       
+                                        <input type="file" name="foto"><br>
+                                        `
+                                    } else if(selection.value === "2"){
+                                        dynamicContent = 
+                                        `<br>
+                                        <input type="text" name="nome_universita" required placeholder = "Nome Universita"> <br>
+                                        <input type="text" name="nome_dipartimento" required placeholder = "Nome Dipartimento"> <br>
+                                        <input type="text" name="curriculum" required placeholder = "Curriculum"> <br>     
+                                        <input type="file" name="foto"><br>
+                                        `
+                                    } else {
+                                        dynamicContent = "";
+                                    }
+                                    formToFill.innerHTML = dynamicContent;
+                                  });
+                                });
+                            </script>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-3">
+                                <input name="password" type="password" id="form3Example4"
+                                    class="form-control form-control-lg" placeholder="Password" required />
+                            </div>
+
+                            <div class="text-center text-lg-start mt-4 pt-2">
+                                <button class="btn btn-dark btn-lg mb-2"
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;" name="login"
+                                    type="submit">Create Account</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
